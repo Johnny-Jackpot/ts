@@ -1,4 +1,4 @@
-class ListNode {
+export class ListNode {
   val: number
   next: ListNode | null
 
@@ -9,36 +9,31 @@ class ListNode {
 }
 
 export function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
-  return getNodeListFromNumber(getNumberFromList(l1) + getNumberFromList(l2));
-};
+  let next = new ListNode();
+  let result = next;
+  let carry = 0;
 
-export function getNumberFromList(l: ListNode | null): number {
-  let number = 0;
-  if (!l) {
-    return number;
+  while (l1 || l2) {
+    let total = carry;
+
+    if (l1) {
+      total += l1.val;
+      l1 = l1.next;
+    }
+
+    if (l2) {
+      total += l2.val;
+      l2 = l2.next;
+    }
+
+    carry = Math.floor(total / 10);
+    next.next = new ListNode(total % 10);
+    next = next.next
   }
 
-  let multiplicator = 1;
-
-  do {
-    number += l.val * multiplicator;
-    multiplicator = multiplicator * 10;
-    l = l.next;
-  } while (l);
-
-  return number;
-}
-
-export function getNodeListFromNumber(n: number): ListNode | null {
-  if (n === 0) {
-    return new ListNode();
+  if (carry !== 0) {
+    next.next = new ListNode(carry);
   }
 
-  const remainder = n % 10;
-  const nextN = (n - remainder) / 10;
-
-  return new ListNode(
-    remainder,
-    nextN > 0 ? getNodeListFromNumber(nextN) : null
-  );
+  return result.next;
 }
