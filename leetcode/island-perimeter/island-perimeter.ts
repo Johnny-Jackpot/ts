@@ -1,20 +1,23 @@
 export function islandPerimeter(grid: number[][]): number {
-  let totalLand = 0;
-  let totalIntersections = 0;
+  let perimeter = 0;
+  const rows = grid.length;
+  const cols = grid[0].length;
 
-  for (let i = 0; i < grid.length; i++) {
-    const row = grid[i];
-    const nextRow = grid[i + 1] || [];
-    for (let j = 0; j < row.length; j++) {
-      const cell = row[j];
-      const nextHorizontalCell = row[j + 1] || 0;
-      const nextVerticalCell = nextRow[j] || 0;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (grid[r][c] === 1) {
+        perimeter += 4;
 
-      totalLand += cell;
-      totalIntersections += cell + nextHorizontalCell > 1 ? 1 : 0;
-      totalIntersections += cell + nextVerticalCell > 1 ? 1 : 0;
+        if (r > 0 && grid[r - 1][c] === 1) {
+          perimeter -= 2;
+        }
+
+        if (c > 0 && grid[r][c - 1] === 1) {
+          perimeter -= 2;
+        }
+      }
     }
   }
 
-  return totalLand * 4 - totalIntersections * 2;
+  return perimeter;
 }
