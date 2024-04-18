@@ -6,7 +6,7 @@ export function islandPerimeter(grid: number[][]): number {
     const row = grid[i];
     const nextRow = grid[i + 1] || [];
     for (let j = 0; j < row.length; j++) {
-      const cell = row[j] || 0;
+      const cell = row[j];
       const nextHorizontalCell = row[j + 1] || 0;
       const nextVerticalCell = nextRow[j] || 0;
 
