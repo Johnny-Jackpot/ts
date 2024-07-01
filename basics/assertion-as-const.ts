@@ -4,3 +4,5 @@ let foo = {
     arr,
 } as const;
 let d = 3_600_000 as const;
+console.log(d);
+console.log(foo);
