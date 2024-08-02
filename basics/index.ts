@@ -32,7 +32,7 @@ const address: TypeAddress = {
     country: 'USA'
 }
 
-let common
+let common: TypeCrmUser & TypeAddress
 
 common = {
     ...user, ...address
