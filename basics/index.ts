@@ -12,4 +12,30 @@ let user: TypeUser = {
     address: 'LA'
 }
 
+type TypeAddress = {
+    city: string
+    country: string
+}
+
+type TypeCrmUser = {
+    name: string
+    age: number
+}
+
+const crmUser: TypeCrmUser = {
+    name: 'Max Payne',
+    age: 41,
+}
+
+const address: TypeAddress = {
+    city: 'LA',
+    country: 'USA'
+}
+
+let common
+
+common = {
+    ...user, ...address
+}
+
 
