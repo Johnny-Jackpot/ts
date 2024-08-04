@@ -29,3 +29,13 @@ const getAddressObjectFunc: TypeAddressFunction = (city) => {
 const getNumbers = (...numbers: number[]) => {
     return numbers
 }
+
+function getCar(name: string): string
+function getCar(name: string, price: number): string
+function getCar(name: string, price?: number): string {
+    return price ? `Name: ${name}, price: ${price}` : `Name: ${name}`
+}
+
+const car1 = getCar('BMW')
+const car2 = getCar('BMW', 100000)
+//const car3 = getCar('BMW', 100000, true)
