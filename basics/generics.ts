@@ -51,3 +51,22 @@ function getLength<T extends TypeLength>(arg: T): number {
 
 getLength('string')
 getLength([1,2,3])
+
+function identity<Type>(arg: Type): Type {
+    return arg;
+}
+identity.x = 'test'
+
+let myIdentity: { <Type>(arg: Type): Type, x: string } = identity;
+
+interface GenericIdFn {
+    <Type>(arg: Type): Type
+}
+let myIdentity2: GenericIdFn = identity
+
+interface GenericIdentityFn<Type> {
+    (arg: Type): Type
+}
+
+let myIdentity3: GenericIdentityFn<number> = identity
+console.log(myIdentity3(23))
