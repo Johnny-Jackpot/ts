@@ -1,3 +1,5 @@
+import {log} from "node:util";
+
 interface Point {
     x: number
     y: number
@@ -36,4 +38,31 @@ let y1 = () => ({name: 'Alice', location: 'Seattle'})
 x1 = y1
 //y1 = x1 erorr
 
+const enum EnumEventType {
+  Mouse,
+  Keyboard
+}
 
+interface Event {
+  timestamp: number
+}
+
+interface MyMouseEvent extends Event {
+  x: number
+  y: number
+}
+
+interface MyKeyEvent extends Event {
+  keyCode: number
+}
+
+type TypeHandler = (n: Event) => void
+
+function listenEvent(eventType: EnumEventType, handler: TypeHandler) {
+}
+
+listenEvent(EnumEventType.Mouse, (e: MyMouseEvent) => console.log(e.x + '.' + e.y))
+listenEvent(EnumEventType.Mouse, (e: Event) =>
+    console.log((e as MyMouseEvent).x))
+//error
+//listenEvent(EnumEventType.Mouse, (e: number) => console.log(e))
