@@ -92,3 +92,14 @@ function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
 let obj = {a: 1, b: 2, c: 3, d: 4}
 getProperty(obj, 'a')
 getProperty(obj, 'd')
+
+function create<Type>(c: {new (): Type}): Type {
+    //do something
+    return new c()
+}
+
+class Smth {}
+
+const smth = create(Smth)
+console.log(smth)
+
