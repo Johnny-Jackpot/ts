@@ -67,4 +67,14 @@ type SomeReturn = ReturnType<TypeGetName>
 type SomeExtract = Extract<'BMW' | 'Toyota', 'BMW' | 'Mercedes'>
 type SomeExclude = Exclude<'BMW' | 'Toyota', 'BMW' | 'Mercedes'>
 type TypeNotNull = NonNullable<string | number | null | undefined>
+type SomeAwaited = Awaited<Promise<string>>
 
+class C {
+    x = 0
+    y = 0
+}
+
+type T0 = InstanceType<typeof C>
+
+function smth(a: number, b: string): void {}
+type T1 = Parameters<typeof smth>
