@@ -56,9 +56,8 @@ interface MyKeyEvent extends Event {
   keyCode: number
 }
 
-type TypeHandler = (n: Event) => void
 
-function listenEvent(eventType: EnumEventType, handler: TypeHandler) {
+function listenEvent(eventType: EnumEventType, handler: (e: Event) => void) {
 }
 
 listenEvent(EnumEventType.Mouse, (e: MyMouseEvent) => console.log(e.x + '.' + e.y))
@@ -83,13 +82,13 @@ let status = Status.Ready
 //status = Color.Blue
 
 class Animal {
-  feet: number
+  feet: number = 0
   constructor(name: string, numFeet: number) {
   }
 }
 
 class Size {
-  feet: number
+  feet: number = 0
   constructor(numFeet: number) {
   }
 }
@@ -99,3 +98,19 @@ let b: Size
 
 a = b
 b = a
+
+interface Empty<T> {}
+let x2: Empty<number>
+let y2: Empty<string>
+
+x2 = y2
+
+interface NotEmpty<T> {
+  data: T
+}
+
+let x3: NotEmpty<number>
+let y3: NotEmpty<string>
+
+//error
+//x3 = y3
