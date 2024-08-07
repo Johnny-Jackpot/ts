@@ -66,3 +66,18 @@ listenEvent(EnumEventType.Mouse, (e: Event) =>
     console.log((e as MyMouseEvent).x))
 //error
 //listenEvent(EnumEventType.Mouse, (e: number) => console.log(e))
+
+enum Status {
+  Ready,
+  Waiting,
+}
+
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+
+let status = Status.Ready
+//error
+//status = Color.Blue
