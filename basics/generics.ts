@@ -84,3 +84,11 @@ const foo = loggingIdentity<string>('bar')
 console.log(foo)
 const bar = loggingIdentity({length: 25, value: 7})
 console.log(bar)
+
+function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+    return obj[key]
+}
+
+let obj = {a: 1, b: 2, c: 3, d: 4}
+getProperty(obj, 'a')
+getProperty(obj, 'd')
