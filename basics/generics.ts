@@ -70,3 +70,17 @@ interface GenericIdentityFn<Type> {
 
 let myIdentity3: GenericIdentityFn<number> = identity
 console.log(myIdentity3(23))
+
+interface Lengthwise {
+    length: number
+}
+
+function loggingIdentity<Type extends  Lengthwise>(arg: Type): Type {
+    console.log(arg.length)
+    return arg
+}
+
+const foo = loggingIdentity<string>('bar')
+console.log(foo)
+const bar = loggingIdentity({length: 25, value: 7})
+console.log(bar)
