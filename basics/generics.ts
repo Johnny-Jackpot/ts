@@ -131,3 +131,19 @@ function createInstance<A extends Animal>(c: new () => A): A {
 
 console.log(createInstance(Lion).keeper.nameTag)
 console.log(createInstance(Bee).keeper.hasMask)
+
+type Container<T, U> = {
+    element: T,
+    children: U
+}
+
+declare function createElem<
+    T extends HTMLElement = HTMLDivElement,
+    U extends HTMLElement[] = T[]
+>(
+    element?: T,
+    children?: U
+): Container<T, U>
+
+const divContainer = createElem()
+const pContainer = createElem(new HTMLParagraphElement(), [new HTMLHeadingElement()])
