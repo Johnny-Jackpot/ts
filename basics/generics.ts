@@ -103,3 +103,31 @@ class Smth {}
 const smth = create(Smth)
 console.log(smth)
 
+class BeeKeeper {
+    hasMask: boolean = true
+}
+
+class ZooKeeper {
+    nameTag: string = 'Mike'
+}
+
+class Animal {
+    numLegs: number = 4
+}
+
+class Bee extends Animal {
+    numLegs = 6
+    keeper: BeeKeeper = new BeeKeeper()
+}
+
+class Lion extends Animal {
+    keeper: ZooKeeper = new ZooKeeper()
+}
+
+function createInstance<A extends Animal>(c: new () => A): A {
+    console.log(c)
+    return new c()
+}
+
+console.log(createInstance(Lion).keeper.nameTag)
+console.log(createInstance(Bee).keeper.hasMask)
