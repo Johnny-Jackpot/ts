@@ -1,22 +1,38 @@
-function LogClass(constructor: Function, ctx: ClassDecoratorContext) {
-    // console.log(constructor.name)
-    // console.log(ctx)
+function loggedMethod(originalMethod: any, context: ClassMethodDecoratorContext) {
+    const methodName = String(context.name)
+
+    function replacementMethod(this: any, ...args: any[]) {
+        console.log(`LOG: Entering method. '${methodName}'`)
+        const result = originalMethod.call(this, ...args)
+        console.log(`LOG: Exiting method. '${methodName}'`)
+
+        return result;
+    }
+
+    return replacementMethod;
 }
 
-function LogMethod(target: Object, ...rest: any) {
-    console.log(target)
-    console.log(typeof rest)
+function bound(originalMethod: Function, context: ClassMethodDecoratorContext) {
+    const methodName = context.name
+    if (context.private) {
+        throw new Error(`bound cannot decorate private properties like ${methodName as string}`)
+    }
+    context.addInitializer(function (this: any) {
+        this[methodName] = this[methodName].bind(this)
+    })
 }
 
-@LogClass
-class Plane {
-    constructor(protected id: number) {}
+class Person {
+    name: string
+    constructor(name: string) {
+        this.name = name
+    }
 
-    @LogMethod
-    getId(): number {
-        return this.id
+    @loggedMethod
+    greet() {
+        console.log(`Hello, my name is ${this.name}`)
     }
 }
 
-const plane = new Plane(1)
-const id = plane.getId()
+const p = new Person('Ron')
+p.greet()
