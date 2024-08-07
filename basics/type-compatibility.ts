@@ -81,3 +81,21 @@ enum Color {
 let status = Status.Ready
 //error
 //status = Color.Blue
+
+class Animal {
+  feet: number
+  constructor(name: string, numFeet: number) {
+  }
+}
+
+class Size {
+  feet: number
+  constructor(numFeet: number) {
+  }
+}
+
+let a: Animal
+let b: Size
+
+a = b
+b = a
