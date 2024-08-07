@@ -39,3 +39,10 @@ function getCar(name: string, price?: number): string {
 const car1 = getCar('BMW')
 const car2 = getCar('BMW', 100000)
 //const car3 = getCar('BMW', 100000, true)
+
+function firstElement<Type>(arr: Type[]): Type|undefined {
+    return arr[0];
+}
+
+const s = firstElement<string>(['str', 'str'])
+const n = firstElement<number>([1, 345])
