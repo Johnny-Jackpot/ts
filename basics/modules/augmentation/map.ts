@@ -6,7 +6,7 @@ declare module './observable' {
 }
 
 Observable.prototype.map = function <T, U>(this: Observable<T>, f: (x: T) => U): Observable<U> {
-  const newObservable = new Observable<U>()
+  const newObservable = new Observable<U>((v) => {})
 
   this.subscribe((value: T) => {
     const newValue = f(value)
