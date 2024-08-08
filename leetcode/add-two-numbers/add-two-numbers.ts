@@ -1,14 +1,17 @@
 export class ListNode {
-  val: number
-  next: ListNode | null
+  val: number;
+  next: ListNode | null;
 
   constructor(val?: number, next?: ListNode | null) {
-    this.val = (val === undefined ? 0 : val)
-    this.next = (next === undefined ? null : next)
+    this.val = val === undefined ? 0 : val;
+    this.next = next === undefined ? null : next;
   }
 }
 
-export function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+export function addTwoNumbers(
+  l1: ListNode | null,
+  l2: ListNode | null,
+): ListNode | null {
   let next = new ListNode();
   let result = next;
   let carry = 0;
@@ -28,7 +31,7 @@ export function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNod
 
     carry = Math.floor(total / 10);
     next.next = new ListNode(total % 10);
-    next = next.next
+    next = next.next;
   }
 
   if (carry !== 0) {

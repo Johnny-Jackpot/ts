@@ -1,48 +1,48 @@
 type TypeAddress = {
-    city: string,
-    country: string,
-}
+  city: string;
+  country: string;
+};
 
 function getAddress(city: string): TypeAddress {
-    return {
-        city,
-        country: 'USA'
-    }
+  return {
+    city,
+    country: "USA",
+  };
 }
 
 const getAddressObject = (city: string): TypeAddress => {
-    return {
-        city,
-        country: 'USA',
-    }
-}
+  return {
+    city,
+    country: "USA",
+  };
+};
 
-type TypeAddressFunction = (city: string) => TypeAddress
+type TypeAddressFunction = (city: string) => TypeAddress;
 
 const getAddressObjectFunc: TypeAddressFunction = (city) => {
-    return {
-        city,
-        country: 'USA',
-    }
-}
+  return {
+    city,
+    country: "USA",
+  };
+};
 
 const getNumbers = (...numbers: number[]) => {
-    return numbers
-}
+  return numbers;
+};
 
-function getCar(name: string): string
-function getCar(name: string, price: number): string
+function getCar(name: string): string;
+function getCar(name: string, price: number): string;
 function getCar(name: string, price?: number): string {
-    return price ? `Name: ${name}, price: ${price}` : `Name: ${name}`
+  return price ? `Name: ${name}, price: ${price}` : `Name: ${name}`;
 }
 
-const car1 = getCar('BMW')
-const car2 = getCar('BMW', 100000)
+const car1 = getCar("BMW");
+const car2 = getCar("BMW", 100000);
 //const car3 = getCar('BMW', 100000, true)
 
-function firstElement<Type>(arr: Type[]): Type|undefined {
-    return arr[0];
+function firstElement<Type>(arr: Type[]): Type | undefined {
+  return arr[0];
 }
 
-const s = firstElement<string>(['str', 'str'])
-const n = firstElement<number>([1, 345])
+const s = firstElement<string>(["str", "str"]);
+const n = firstElement<number>([1, 345]);

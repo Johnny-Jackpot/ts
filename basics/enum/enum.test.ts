@@ -1,5 +1,5 @@
-import {describe, expect, test} from '@jest/globals';
-import {EDirection, ODirection, run, walk} from "./enum";
+import { describe, expect, test } from "@jest/globals";
+import { EDirection, ODirection, run, walk } from "./enum";
 
 describe("Enum", () => {
   test("Enum", () => {

@@ -1,16 +1,16 @@
 class Reptile {
   private reptiles: Array<string> = [
-    'Alligator',
-    'Crocodile',
-    'Chameleon',
-    'Komodo Dragon',
-    'Iguana',
-    'Salamander',
-    'Snake',
-    'Lizard',
-    'Python',
-    'Tortoise',
-    'Turtle',
+    "Alligator",
+    "Crocodile",
+    "Chameleon",
+    "Komodo Dragon",
+    "Iguana",
+    "Salamander",
+    "Snake",
+    "Lizard",
+    "Python",
+    "Tortoise",
+    "Turtle",
   ];
 
   shuffle(): void {
@@ -32,9 +32,9 @@ class Reptile {
     for (let i: number = 0; i < count; i++) {
       if (allowDupes) {
         // Dupes are cool, so let's just pull random reptiles
-        selected.push(this.reptiles[
-          Math.floor(Math.random() * this.reptiles.length)
-          ]);
+        selected.push(
+          this.reptiles[Math.floor(Math.random() * this.reptiles.length)],
+        );
       } else {
         // Dupes are no go, shuffle the array and grab a few
         this.shuffle();

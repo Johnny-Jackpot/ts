@@ -1,8 +1,8 @@
 # Pet project to learn TS basics
 
 ## My Roadmap
-https://roadmap.sh/typescript?s=6613cdb96e2052bda3df8585
 
+https://roadmap.sh/typescript?s=6613cdb96e2052bda3df8585
 
 ## Setup
 
@@ -23,4 +23,5 @@ bun install
 ```
 
 ## Run
+
 Run ts-node to execute you files, f.e. `npx ts-node script.ts`

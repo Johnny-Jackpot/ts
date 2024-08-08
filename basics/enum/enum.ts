@@ -16,7 +16,7 @@ export function walk(direction: EDirection): EDirection {
   return direction;
 }
 
-export type Direction = typeof ODirection[keyof typeof ODirection];
+export type Direction = (typeof ODirection)[keyof typeof ODirection];
 
 export function run(direction: Direction): Direction {
   return direction;

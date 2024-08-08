@@ -1,34 +1,34 @@
 enum EnumRoles {
-    Admin,
-    Guest,
-    User,
+  Admin,
+  Guest,
+  User,
 }
 
 const enum EnumColor {
-    black,
-    pink,
-    green
+  black,
+  pink,
+  green,
 }
 
 interface IUser {
-    role: EnumRoles,
-    color: EnumColor,
+  role: EnumRoles;
+  color: EnumColor;
 }
 
 const user: IUser = {
-    role: EnumRoles.Admin,
-    color: EnumColor.black
-}
+  role: EnumRoles.Admin,
+  color: EnumColor.black,
+};
 
 const user2: IUser = {
-    role: EnumRoles.Guest,
-    color: EnumColor.green
-}
+  role: EnumRoles.Guest,
+  color: EnumColor.green,
+};
 
 const user3: IUser = {
-    role: EnumRoles.User,
-    color: EnumColor.pink,
-}
+  role: EnumRoles.User,
+  color: EnumColor.pink,
+};
 
-console.log(EnumRoles)
-console.log(EnumRoles[EnumRoles.Admin])
+console.log(EnumRoles);
+console.log(EnumRoles[EnumRoles.Admin]);
