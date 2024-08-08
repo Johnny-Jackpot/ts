@@ -33,3 +33,37 @@ function createLabelG<T extends number | string>(nameOrId: T): NameOrId<T> {
 const a = createLabelG<number>(42)
 const b = createLabelG<string>('foo')
 
+type MessageOf<T extends {message: unknown}> = T['message']
+interface Email {
+  message: string
+}
+
+type EmailMessageContent = MessageOf<Email>
+
+type MessageOfOrNever<T> = T extends {message: unknown} ? T['message'] : never
+type EmailMessageContentOrNever = MessageOfOrNever<Email>
+type DogMessageContentOrNever = MessageOfOrNever<Dog>
+
+type Flatten<T> = T extends any[] ? T[number] : T
+const strArr: string[] = ['foo']
+type Str = Flatten<typeof strArr>
+type Str2 = Flatten<typeof strArr[0]>
+type Num = Flatten<number>
+
+type AnotherFlatten<T> = T extends Array<infer Item> ? Item : T
+
+type GetReturnType<Type> = Type extends (...args: any[]) => infer Return ? Return : never
+type N1 = GetReturnType<() => number>
+type S1 = GetReturnType<() => string>
+type N2 = GetReturnType<typeof createLabelG<number>>
+
+type R1 = ReturnType<typeof createLabel>
+
+type ToArray<Type> = Type extends any ? Type[] : never
+
+type StrArrOrNumArr = ToArray<string | number>
+const x: StrArrOrNumArr = ['foo']
+
+type ToArrayNonDist<T> = [T] extends [any] ? T[] : never
+type ArrOfStrOrNum = ToArrayNonDist<string | number>
+const y: ArrOfStrOrNum = ['foo', 2]
